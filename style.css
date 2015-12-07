@@ -1,0 +1,160 @@
+html{
+	text-align: center;
+}
+body {
+	margin: 0 auto;
+	width: 100%;
+	font-family: "Helvetica", Arial, Serif;
+	position: relative;
+	background: #D21C25 url('/i/bg.png') no-repeat bottom;
+	background-size: contain; 
+}
+h1 {
+	text-indent: -9999px;
+	height: 0;
+	margin: 0;
+}
+
+@keyframes drop{
+	0%{
+		transform: translate(22px,-14px);
+	}
+	5%{
+		transform: translate(23px,-14px) rotate(6deg);
+	}
+	12%{
+		transform: translate(23px,-14px) rotate(-12deg);
+	}
+	28%{
+		transform: translate(23px,-14px) rotate(18deg);
+	}
+	38%{
+		transform: translate(23px,-14px) rotate(-130deg);
+	}
+	99%{
+		transform: translate(23px,1300px) rotate(-720deg);
+	}
+	100%{
+		transform: translate(23px,2000px) rotate(-720deg);
+	}
+}
+
+#s{
+	width: 69px;
+	position: relative;
+	z-index: 1000000;
+	-webkit-transform: translate(22px,-14px);
+	-moz-transform: translate(22px,-14px);
+	transform: translate(22px,-14px);
+	animation: drop 3s forwards cubic-bezier(0.59, 0.03, 0.11, 1.01);
+	animation-delay: 2s;
+	transform-origin: center center;
+}
+
+#elfie{
+	width: 194px;
+}
+
+video{
+	width: 100%;
+	max-width: 800px;
+	height: auto;
+}
+
+#overlay{
+	width: 100%;
+	max-width: 800px;
+	margin-top: 60px;
+}
+
+.wrapper {
+	position: relative;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 60px;
+	background: url('/i/frame.png') no-repeat 0 0;
+}
+
+p {
+	text-align:center;
+	color: #392C44;
+	margin-bottom: 20px;
+	margin-top:20px;
+}
+
+a {
+	color: #392C44;
+	text-decoration:none;
+}
+
+
+.video-wrapper {
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden; }
+
+#output{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+/*#flatten{
+	display: none;
+}*/
+
+#startCamera {
+  opacity: 1;
+  display: initial;
+  margin-top: -80px;
+  margin-left: -65px;
+  transition: ease-in-out 400ms; }
+
+.home{
+	text-indent: -9999px;
+	background: url('i/logo.png') center no-repeat;
+	height: 200px;
+	margin: 20px auto;
+	display: block;
+}
+
+/*#canvas {
+  pointer-events: none;
+  border-radius: 50%;
+  margin-left: -200px;
+  margin-top: -220px;
+  position: absolute;
+  margin-left: -110px;
+  opacity: 0; }*/
+
+
+svg {
+    border-radius: 5px;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    margin: 0 auto;
+    display: block;
+    height: 100vh;
+    max-height: 741px;
+}
+
+.btn{
+	color: #fff;
+	font-weight: 700;
+	border: #A5010A 2px solid;
+    box-shadow: 2px 2px #A5010A;
+	background: #C0222A;
+	padding: 7px 10px;
+	border-radius: 50px;
+	font-size: 22px;
+	transition: 0.2s ease-in-out;
+}
+
+.btn:hover{
+	cursor: pointer;
+	background: #A5010A;
+
+}
