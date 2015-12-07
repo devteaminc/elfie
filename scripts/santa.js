@@ -13,7 +13,8 @@ debugOverlay.style.top = '0px';
 debugOverlay.style.zIndex = '100002';
 debugOverlay.style.display = 'none';
 var	santa = new Image();
-santa.src = "i/santa.png";
+santa.setAttribute('crossOrigin', 'anonymous');
+santa.src = "//rawgit.com/devteaminc/elfie/master/i/santa.png";
 // add some custom messaging
 statusMessages = {
 	"whitebalance" : "Finding your face",
