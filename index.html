@@ -20,9 +20,13 @@
 				<!-- <svg id="svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"></svg> -->
 			</div>
 			<p id='gUMMessage'></p>
+			<div id="tweet-wrapper">
+				<p id="tweetText" contenteditable>Santa Elfie created by http://devteaminc.co/ #elfie</p>
+				<button id="tweet" class="btn">Share on Twitter</button>
+			</div>
 			<button class="btn" id="snap">Snap Photo</button>
-			<p><span class="btn" id='headtrackerMessage'>Loading...</span></p>
-			<p><input type="button" class="btn" onclick="htracker.stop();htracker.start();" value="Reset"></input></p>
+			<input type="button" class="btn" id="refresh" onclick="htracker.stop();htracker.start();" value="Refresh"></input>
+			<p>Elfie Status: <span class="btn" id='headtrackerMessage'>Loading...</span></p>
 			<a href="http://devteaminc.co/" target="_blank" class="home">Merry Christmas From Devteam Inc.</a>
 			<script src="https://rawgit.com/devteaminc/elfie/master/scripts/headtrackr.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -31,3 +35,8 @@
 			<!-- <script src="https://rawgit.com/devteaminc/elfie/master/scripts/snow.js"></script> -->
 	</body>
 </html>
+
+
+
+			
+
