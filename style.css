@@ -36,6 +36,7 @@ h1 {
 	}
 	100%{
 		transform: translate(23px,2000px) rotate(-720deg);
+		position: absolute;
 	}
 }
 
@@ -47,12 +48,32 @@ h1 {
 	-moz-transform: translate(22px,-14px);
 	transform: translate(22px,-14px);
 	animation: drop 3s forwards cubic-bezier(0.59, 0.03, 0.11, 1.01);
-	animation-delay: 2s;
+	animation-delay: 1s;
 	transform-origin: center center;
+}
+
+@keyframes slide{
+	0%{
+		transform: translate(0,0);
+	}
+	20%{
+		transform: translate(-10px,0);
+	}
+	35%{
+		transform: translate(0px,0);
+	}
+	55%{
+		transform: translate(-15px,0);
+	}
+	0%{
+		transform: translate(0,0);
+	}
 }
 
 #elfie{
 	width: 194px;
+	animation: slide 3s forwards cubic-bezier(0.59, 0.03, 0.11, 1.01);
+	animation-delay: 1s;
 }
 
 video{
@@ -73,6 +94,95 @@ video{
 	margin: 0 auto;
 	padding: 60px;
 	background: url('/i/frame.png') no-repeat 0 0;
+}
+
+.wrapper:after{
+	display: none;
+	content: "3";
+	font-size: 142px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 37%;
+    color: #fff;
+    left: 50%;
+    margin-left: -80px;
+    opacity: 0;
+    z-index: 1000003;
+    background: #D21C25;
+    border-radius: 50%;
+    padding: 20px;
+    line-height: 0.7;
+    border: 10px solid #fff;
+    box-shadow: 
+    -4px 4px #333, 
+    4px -4px #333, 
+    -4px -4px #333, 
+    4px 4px #333
+}
+
+@keyframes countdown{
+	0%{
+		opacity: 0.6;
+		content: "3"
+	}
+	10%{
+		opacity: 0.6;
+	}
+	32%{
+		opacity: 0;
+		content: "3"
+	}
+	33%{
+		opacity: 0.6;
+		content: "2";
+	}
+	43%{
+		opacity: 0.6;
+	}
+	65%{
+		opacity: 0;
+		content: "2";
+	}
+	66%{
+		opacity: 0.6;
+		content: "1";
+	}
+	77%{
+		opacity: 0.6;
+	}
+	100%{
+		display: none;
+		content: "1";
+	}
+}
+
+.wrapper.clicked:after{
+	display: block;
+	animation: countdown 3s forwards;
+}
+
+@keyframes flash{
+	90%{
+		opacity: 0;
+	}
+	94%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+.wrapper.clicked:before{
+	width: 800px;
+	height: 600px;
+	background: #fff;
+	content: "";
+	position: absolute;
+	z-index: 1000004;
+	animation: flash 3s forwards;
+	opacity: 0;
 }
 
 p {
@@ -101,16 +211,15 @@ a {
 	top: 0;
 }
 
-/*#flatten{
-	display: none;
-}*/
-
-#startCamera {
-  opacity: 1;
-  display: initial;
-  margin-top: -80px;
-  margin-left: -65px;
-  transition: ease-in-out 400ms; }
+#flatten{
+	position: absolute;
+	width: 100%;
+    max-width: 800px;
+    margin-top: 60px;
+    top: 0px;
+    z-index: 100002;
+    display: block;
+}
 
 .home{
 	text-indent: -9999px;
@@ -120,15 +229,20 @@ a {
 	display: block;
 }
 
-/*#canvas {
-  pointer-events: none;
-  border-radius: 50%;
-  margin-left: -200px;
-  margin-top: -220px;
-  position: absolute;
-  margin-left: -110px;
-  opacity: 0; }*/
+#tweet-wrapper{
+	display: none;
+	background: #fff;
+    width: 55%;
+    max-width: 800px;
+    position: relative;
+    margin: -80px auto 20px;
+    padding: 10px 5px 20px;
+    border-radius: 0 0 20px 20px;
+}
 
+#tweet-wrapper p{
+	margin: 5px 0 10px;
+}
 
 svg {
     border-radius: 5px;
@@ -142,6 +256,8 @@ svg {
 }
 
 .btn{
+	display: inline-block;
+	margin: 0 5px;
 	color: #fff;
 	font-weight: 700;
 	border: #A5010A 2px solid;
@@ -157,4 +273,29 @@ svg {
 	cursor: pointer;
 	background: #A5010A;
 
+}
+
+
+@media (max-width: 960px){
+	.wrapper{
+		max-width: 960px;
+		width: 100%;
+		padding: 60px 0;
+	    background: url('/i/frame.png') no-repeat -70px 0;
+		background-size: cover;
+	}
+	video, #overlay, #flatten{
+		max-width: 960px;
+	}
+	.wrapper.clicked:before {
+    	width: 100%;
+    	height: 75vw;
+	}
+	.wrapper:after{
+		top: 27%;
+	}
+	#tweet-wrapper{
+		width: 100%;
+		box-sizing: border-box;
+	}
 }

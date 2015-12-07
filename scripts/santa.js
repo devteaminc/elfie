@@ -21,7 +21,7 @@ statusMessages = {
 	"hints" : "Hmmm...detecting your face is taking a while, you may need to refresh",
 	"redetecting" : "Lost your of face, redetecting...",
 	"lost" : "Lost your face :(",
-	"found" : "Auto-Santa!"
+	"found" : "Elfie!"
 };
 supportMessages = {
 	"no getUserMedia" : "Unfortunately, <a href='http://dev.w3.org/2011/webrtc/editor/getusermedia.html'>getUserMedia</a> is not supported in your browser. Try <a href='http://www.opera.com/browser/'>downloading Opera 12</a> or <a href='http://caniuse.com/stream'>another browser that supports getUserMedia</a>. Now using fallback video for facedetection.",
@@ -63,55 +63,18 @@ function showProbabilityCanvas() {
 	}
 }
 
-
-//OAuth.io's logo in base64
-var logo = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAKfSURBVHjabJNNSFRRGIafc+6d8Y6OM42aTmpNauRgUVBRVEwZCC6kdtGqRRBtWkWLKGgXtghaRIsK3ES0L4pKCPpZREX2oxnVlOn4V4026Tjj3HvPPS2asRp64OODw8v3cXjfTxinrlOGBHSxzgPjxW4Cqvj+j7icy8AVIAIcK5YPuAMc/9+2fxEioWz3sFoozCrloVzVrLKLtud6XQiRKKlKcrPYo8AbhEiq+Xxba2MN7dEwtqsQCExT8moszfRMNmFUWwN4uhKI/z1gHikCai6/fefaRlqiYW6+HGEunQU00cYaejbGeJacjgym0hEjGBhC66UvhIEWlbPHN6yqo7UhzLUbz9mxup65C4dInTtIxPLRd/sFW1vqaaoNoRw1DawAQhI4Awzi6fjahjD97ybAUfTuWc+Je6+5l5zmTOc6mMnydOQbm2N1sGh3AZNArwR6Pa0fRGqD5BYdvk7MEoo3sbG1npXVFsv8JtviTdAWZWjyB8pRUOkHuAqcNYEpDQOmFJ2O8iCbpyfegRSCk53rlszZFKtjYCiFqzyElAAPgQkTuGgIcfR7JkeouRYCfrw/Li1RcD38oQCW5UMvFKCqog/YYgJ9QAbHPTKbt5cnNrVy980op+uCzOVshBCYhmR4LM2+DTFG0vNgGu+BS8AjUYqyFiLp5QttBza38flnjudPPoDt/k5ulUX37g6k43JncAwjGOhH626A0oA1wEfl6UVs10q0NxK2fGQLLkJAqMLHeGaBF5++KllVYQjIF+13SkFKAi2GFN+wfMOP36ZiZqWfppogrqeZTM+jXYURtO4XN8cAp/wWvgA5YMoIWiOelPtHZ7JMZBYywm/uNSorQOvRona0/Bb+ZhcgBRQMQ14CUsAtoAoolIt/DQBMqAUSa5wR2gAAAABJRU5ErkJggg=="; 
-
-//Convert base64 into blob
-//cf http://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
-function b64toBlob(b64Data, contentType, sliceSize) {
-    contentType = contentType || '';
-    sliceSize = sliceSize || 512;
-
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
-
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-        var byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
-        }
-
-        var byteArray = new Uint8Array(byteNumbers);
-
-        byteArrays.push(byteArray);
-    }
-
-    var blob = new Blob(byteArrays, {type: contentType});
-    return blob;
-}
-
-
-OAuth.initialize("30q5ltAquXE7JCRtT7QSgI7QZ", {cache:true});
+OAuth.initialize("PLij0Qu_yjXkj-vfvHLVlI2fXTg");
 
 function postCanvasToURL() {
-	  // var data = snap.toDataURL('image/png');
-	  // var file = dataURItoBlob(data);
-
-	  // var fd = new FormData();
-	  // fd.append("media[]", file);
-	  // fd.append("key", "30q5ltAquXE7JCRtT7QSgI7QZ");
-	  // var xhr = new XMLHttpRequest();
-	  // xhr.open("POST", "https://api.twitter.com/1.1/statuses/update.json?");
-	  // xhr.send(fd);
-
+	  var img = snap.toDataURL();
+	  var file = dataURItoBlob(img);
+	  var tweetText = $('#tweetText').text();
 
 	  OAuth.popup("twitter").then(function(result) {
 	      var data = new FormData();
-	      data.append('status', 'Blob to PNG');
-	      data.append('media[]', b64toBlob(logo), 'logo.png');
+	      data.append('status', tweetText);
+	      // data.append('text', '#elfie http://devteaminc.co/');
+	      data.append('media[]', file, 'elfie.png');
 	      
 	      return result.post('/1.1/statuses/update_with_media.json', {
 	          data: data,
@@ -145,17 +108,41 @@ function dataURItoBlob(dataURI) {
     return new Blob([ia], {type:mimeString});
 }
 
-
-
-
-
 var snap = document.getElementById('flatten');
 var ctx3 = snap.getContext('2d');
 
 $('#snap').click(function(){
-	ctx3.drawImage(canvasInput, 0, 0);
-	ctx3.drawImage(canvasOverlay, 0, 0);
+
+	if($('.clicked').length >= 0){
+		$('.wrapper').removeClass('clicked');
+		$('#tweet-wrapper').hide();
+		$('#flatten').hide();
+		$('.wrapper').addClass('clicked');
+		setTimeout(function(){
+			ctx3.drawImage(canvasInput, 0, 0);
+			ctx3.drawImage(canvasOverlay, 0, 0);
+			$('#flatten').show();
+			$('#tweet-wrapper').show();
+		},3000);
+	} else {
+		$('.wrapper').addClass('clicked');
+		setTimeout(function(){
+			ctx3.drawImage(canvasInput, 0, 0);
+			ctx3.drawImage(canvasOverlay, 0, 0);
+			$('#flatten').show();
+			$('#tweet-wrapper').show();
+		},3000);
+	}
+})
+
+$('#tweet').click(function(){
 	postCanvasToURL();
+})
+
+$('#refresh').click(function(){
+	$('#tweet-wrapper').hide();
+	$('#flatten').hide();
+	$('.wrapper').removeClass('clicked');
 })
 
 
