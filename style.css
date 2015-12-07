@@ -31,12 +31,15 @@ h1 {
 	38%{
 		transform: translate(23px,-14px) rotate(-130deg);
 	}
+	80%{
+		width: 69px;
+	}
 	99%{
 		transform: translate(23px,1300px) rotate(-720deg);
 	}
 	100%{
 		transform: translate(23px,2000px) rotate(-720deg);
-		position: absolute;
+		width: 0;
 	}
 }
 
@@ -48,32 +51,13 @@ h1 {
 	-moz-transform: translate(22px,-14px);
 	transform: translate(22px,-14px);
 	animation: drop 3s forwards cubic-bezier(0.59, 0.03, 0.11, 1.01);
-	animation-delay: 1s;
+	animation-delay: 2s;
 	transform-origin: center center;
-}
-
-@keyframes slide{
-	0%{
-		transform: translate(0,0);
-	}
-	20%{
-		transform: translate(-10px,0);
-	}
-	35%{
-		transform: translate(0px,0);
-	}
-	55%{
-		transform: translate(-15px,0);
-	}
-	0%{
-		transform: translate(0,0);
-	}
 }
 
 #elfie{
 	width: 194px;
-	animation: slide 3s forwards cubic-bezier(0.59, 0.03, 0.11, 1.01);
-	animation-delay: 1s;
+	transition: 1000ms ease-in-out;
 }
 
 video{
