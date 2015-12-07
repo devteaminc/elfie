@@ -89,7 +89,7 @@ function postCanvasToURL() {
 	  }).fail(function(e){
 	      var errorTxt = JSON.stringify(e, null, 2)
 	      $('#result').html("Error\n" + errorTxt).show()
-	      console.log("Fail");
+	      console.log(e);
 	  });
 }
 
