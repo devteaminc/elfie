@@ -13,11 +13,11 @@ for (var i = 0; i < 1500; i++) {
     circ.setAttributeNS(null, 'r', r);
     circ.setAttributeNS(null, 'fill', '#fff');
     //Set start and end point for x and y 
-    var a = Math.floor(Math.random() * 1200);
+    var a = Math.floor(Math.random() * 2000);
     var b = Math.floor(Math.random() * 2750);
     var str = a+';'+b;
     var c = Math.floor(Math.random() * -750);
-    var d = Math.floor(Math.random() * 1750);
+    var d = Math.floor(Math.random() * 2000);
     var stry = c+';'+d;
     
    var anix = document.createElementNS(svgns, 'animate');
@@ -39,7 +39,6 @@ for (var i = 0; i < 1500; i++) {
 rectan();
 	 
 $('#snow').click(function(){
-  // $('svg').css('display','block');
   if($("#svg").css("display")=="block"){
          $("#svg").css("display", "none");
      }else{
