@@ -16,7 +16,7 @@ h1 {
 }
 
 p{
-	color: #fff
+	color: #fff;
 }
 
 @keyframes drop{
@@ -176,7 +176,6 @@ video{
 
 p {
 	text-align:center;
-	color: #392C44;
 	margin-bottom: 20px;
 	margin-top:20px;
 }
@@ -278,6 +277,15 @@ a {
 	font-family: 'Oswald', sans-serif;
 }
 
+#twitter-widget-0{
+	margin: 0 auto;
+	border-radius: 15px;
+}
+
+#MediaCard-borderOverlay{
+	border: none;
+}
+
 svg {
     background: transparent;
     position: absolute;
@@ -304,6 +312,7 @@ svg.block{
 	padding: 7px 40px 7px 15px;
 	border-radius: 50px;
 	font-size: 16px;
+	font-family: 'Oswald', sans-serif;
 	transition: 0.2s ease-in-out;
 	text-shadow: 1px 1px #545454;
 }
@@ -315,14 +324,24 @@ svg.block{
 
 #snap{
 	background-image: url('i/snap.png');
-	background-size: 20px;
-	background-position: 93% 6px;
+	background-size: 26px;
+	background-position: 94% 14px;
+	font-size: 26px;
+    display: block;
+    margin: -27px auto 10px;
+    padding-right: 48px;
 }
 
 #refresh{
 	background-image: url('i/refresh.png');
 	background-size: 18px;
-	background-position: 87% 7px;
+	background-position: 85% 10px;
+}
+
+#snow{
+	background-image: url('i/snow.png');
+	background-size: 18px;
+	background-position: 84% 8px;
 }
 
 .status{
