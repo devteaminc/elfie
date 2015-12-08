@@ -73,7 +73,7 @@ function postCanvasToURL() {
 
 	  OAuth.popup("twitter").then(function(result) {
 	      var data = new FormData();
-	      data.append('status', tweetText);
+	      data.append('status', tweetText + " devteaminc.github.io/elfie @devteaminc #elfie");
 	      // data.append('text', '#elfie http://devteaminc.co/');
 	      data.append('media[]', file, 'elfie.png');
 	      
@@ -147,5 +147,5 @@ $('#refresh').click(function(){
 	$('.wrapper').removeClass('clicked');
 })
 
-if (window.location.protocol != "https:")
-    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+// if (window.location.protocol != "https:")
+//     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);

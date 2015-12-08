@@ -2,7 +2,7 @@ var svgns = "http://www.w3.org/2000/svg";
 function rectan()
 {
 // Set the number of circles
-for (var i = 0; i < 2500; i++) {
+for (var i = 0; i < 1500; i++) {
     var x = Math.random() * 1750,
         y = Math.random() * 750;
         // Choose the max circle size
@@ -13,7 +13,7 @@ for (var i = 0; i < 2500; i++) {
     circ.setAttributeNS(null, 'r', r);
     circ.setAttributeNS(null, 'fill', '#fff');
     //Set start and end point for x and y 
-    var a = Math.floor(Math.random() * 850);
+    var a = Math.floor(Math.random() * 1200);
     var b = Math.floor(Math.random() * 2750);
     var str = a+';'+b;
     var c = Math.floor(Math.random() * -750);
@@ -24,7 +24,7 @@ for (var i = 0; i < 2500; i++) {
    anix.setAttributeNS(null, 'attributeName', 'cx');
    anix.setAttributeNS(null, 'values', str);
    // Set animation time for x traverse
-   anix.setAttributeNS(null, 'dur', "60s");
+   anix.setAttributeNS(null, 'dur', "120s");
    anix.setAttributeNS(null, 'repeatCount', "indefinite");
    var aniy = document.createElementNS(svgns, 'animate');
    aniy.setAttributeNS(null, 'attributeName', 'cy');
@@ -38,4 +38,12 @@ for (var i = 0; i < 2500; i++) {
 }
 rectan();
 	 
+$('#snow').click(function(){
+  // $('svg').css('display','block');
+  if($("#svg").css("display")=="block"){
+         $("#svg").css("display", "none");
+     }else{
+         $("#svg").css("display", "block");
+     }
+})
   

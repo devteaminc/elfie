@@ -4,9 +4,9 @@ html{
 body {
 	margin: 0 auto;
 	width: 100%;
-	font-family: "Helvetica", Arial, Serif;
+	font-family: 'Oswald', sans-serif;
 	position: relative;
-	background: #D21C25 url('i/bg.png') no-repeat bottom;
+	background: #D01C26 url('i/bg.png') no-repeat bottom;
 	background-size: contain; 
 }
 h1 {
@@ -15,27 +15,31 @@ h1 {
 	margin: 0;
 }
 
+p{
+	color: #fff
+}
+
 @keyframes drop{
 	0%{
-		transform: translate(22px,-14px);
+		transform: translate(110px,21px);
 	}
 	5%{
-		transform: translate(23px,-14px) rotate(6deg);
+		transform: translate(110px,21px) rotate(6deg);
 	}
 	12%{
-		transform: translate(23px,-14px) rotate(-12deg);
+		transform: translate(110px,21px) rotate(-12deg);
 	}
 	28%{
-		transform: translate(23px,-14px) rotate(18deg);
+		transform: translate(110px,21px) rotate(18deg);
 	}
 	38%{
-		transform: translate(23px,-14px) rotate(-130deg);
+		transform: translate(110px,21px) rotate(-130deg);
 	}
 	80%{
 		width: 69px;
 	}
 	99%{
-		transform: translate(23px,1300px) rotate(-720deg);
+		transform: translate(110px,1300px) rotate(-720deg);
 	}
 	100%{
 		transform: translate(23px,2000px) rotate(-720deg);
@@ -45,19 +49,20 @@ h1 {
 
 #s{
 	width: 69px;
-	position: relative;
+	position: absolute;
 	z-index: 1000000;
-	-webkit-transform: translate(22px,-14px);
-	-moz-transform: translate(22px,-14px);
-	transform: translate(22px,-14px);
+	-webkit-transform: translate(110px,21px);
+	-moz-transform: translate(110px,21px);
+	transform: translate(110px,21px);
 	animation: drop 3s forwards cubic-bezier(0.59, 0.03, 0.11, 1.01);
 	animation-delay: 2s;
 	transform-origin: center center;
 }
 
 #elfie{
-	width: 194px;
+	width: 480px;
 	transition: 1000ms ease-in-out;
+	margin: 10px auto -20px;
 }
 
 video{
@@ -215,28 +220,77 @@ a {
 
 #tweet-wrapper{
 	display: none;
-	background: #fff;
-    width: 55%;
-    max-width: 800px;
+	background: rgba(142,9,16,0.5);
+    width: 800px;
     position: relative;
-    margin: -80px auto 20px;
-    padding: 10px 5px 20px;
-    border-radius: 0 0 20px 20px;
+    margin: 0 auto 20px;
+    padding: 10px 5px;
+    border-radius: 15px;
+    overflow: auto;
 }
 
 #tweet-wrapper p{
-	margin: 5px 0 10px;
+	margin: 5px;
+	font-size: 20px;
+	color: #fff;
+	display: block;
+	font-weight: 700;
+}
+
+#tweet-wrapper textarea{
+	margin: -30px 10px 10px;
+	resize: none;
+	border-radius: 10px;
+	padding: 0 8px;
+	border: none;
+	width: 70%;
+	font-size: 14px;
+    color: #7B7979;
+    font-family: 'Oswald', sans-serif;
+    height: 34px;
+    float: left
+}
+
+#tweet-wrapper textarea:focus{
+	outline: none;
+}
+
+#tweet-wrapper textarea#tweetText{
+	margin-top: 5px;
+	padding: 8px 8px 8px;
+}
+
+#tweet{
+	background: #55acee url('i/tweet.png') 94% 13px no-repeat;
+	background-size: 22px;
+	padding: 12px 37px 12px 12px;
+	width: 22%;
+	margin: 5px;
+	text-transform: uppercase;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	color: #fff;
+	font-weight: 700;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 16px;
+	font-family: 'Oswald', sans-serif;
 }
 
 svg {
-    border-radius: 5px;
     background: transparent;
     position: absolute;
     top: 0;
     margin: 0 auto;
-    display: block;
     height: 100vh;
-    max-height: 741px;
+    z-index: 100004;
+    pointer-events: none;
+    display: none;
+}
+
+svg.block{
+	 display: block;
 }
 
 .btn{
@@ -244,21 +298,41 @@ svg {
 	margin: 0 5px;
 	color: #fff;
 	font-weight: 700;
-	border: #A5010A 2px solid;
-    box-shadow: 2px 2px #A5010A;
-	background: #C0222A;
-	padding: 7px 10px;
+	border: #A5010A 3px solid;
+	background-color: #C0222A;
+	background-repeat: no-repeat;
+	padding: 7px 40px 7px 15px;
 	border-radius: 50px;
-	font-size: 22px;
+	font-size: 16px;
 	transition: 0.2s ease-in-out;
+	text-shadow: 1px 1px #545454;
 }
 
 .btn:hover{
 	cursor: pointer;
-	background: #A5010A;
-
+	background-color: #A5010A;
 }
 
+#snap{
+	background-image: url('i/snap.png');
+	background-size: 20px;
+	background-position: 93% 6px;
+}
+
+#refresh{
+	background-image: url('i/refresh.png');
+	background-size: 18px;
+	background-position: 87% 7px;
+}
+
+.status{
+	background: rgba(142,9,16,0.5);
+	width: 800px;
+	padding: 7px;
+	border-radius: 15px;
+	color: #fff;
+	margin: 20px auto;
+}
 
 @media (max-width: 960px){
 	.wrapper{
@@ -267,6 +341,9 @@ svg {
 		padding: 60px 0;
 	    background: url('i/frame.png') no-repeat -70px 0;
 		background-size: cover;
+	}
+	#s, svg{
+		display: none;
 	}
 	video, #overlay, #flatten{
 		max-width: 960px;
@@ -281,5 +358,29 @@ svg {
 	#tweet-wrapper{
 		width: 100%;
 		box-sizing: border-box;
+	}
+	#elfie{
+		max-width: 480px;
+		width: 90%;
+	}
+	#tweet-wrapper{
+		width: 95%;
+	}
+	.status, #tweet-wrapper textarea{
+		width: 88%;
+		height: auto;
+	}
+	#tweet-wrapper textarea{
+		display: none;
+	}
+	#tweet-wrapper textarea#tweetText{
+		border-radius: 10px;
+		display: block;
+	}
+	#tweet{
+		width: 180px;
+	}
+	.btn{
+		margin: 5px;
 	}
 }
