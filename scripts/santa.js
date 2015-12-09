@@ -150,10 +150,12 @@ $('#refresh').click(function(){
 	$('.wrapper').removeClass('clicked');
 	$('#download').hide();
 })
-
-if (window.location.protocol != "https:")
-    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-
+// redirect http to https except on localhost
+if (document.location.hostname != "localhost"){
+	if (window.location.protocol != "https:"){
+	    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+	}
+}
 
 /**
  * This is the function that will take care of image extracting and
