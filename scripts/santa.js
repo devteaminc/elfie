@@ -22,7 +22,7 @@ statusMessages = {
 	"hints" : "Hmmm...detecting your face is taking a while, you may need to refresh",
 	"redetecting" : "Lost your of face, redetecting...",
 	"lost" : "Lost your face :(",
-	"found" : "Elfie!"
+	"found" : "Ho Ho Ho!"
 };
 supportMessages = {
 	"no getUserMedia" : "Unfortunately, <a href='http://dev.w3.org/2011/webrtc/editor/getusermedia.html'>getUserMedia</a> is not supported in your browser. Try <a href='http://www.opera.com/browser/'>downloading Opera 12</a> or <a href='http://caniuse.com/stream'>another browser that supports getUserMedia</a>. Now using fallback video for facedetection.",
@@ -120,11 +120,13 @@ $('#snap').click(function(){
 		$('#tweet-wrapper').hide();
 		$('#flatten').hide();
 		$('.wrapper').addClass('clicked');
+		$('#download').hide();
 		setTimeout(function(){
 			ctx3.drawImage(canvasInput, 0, 0);
 			ctx3.drawImage(canvasOverlay, 0, 0);
 			$('#flatten').show();
 			$('#tweet-wrapper').show();
+			$('#download').show();
 		},3000);
 	} else {
 		$('.wrapper').addClass('clicked');
@@ -133,6 +135,7 @@ $('#snap').click(function(){
 			ctx3.drawImage(canvasOverlay, 0, 0);
 			$('#flatten').show();
 			$('#tweet-wrapper').show();
+			$('#download').show();
 		},3000);
 	}
 })
@@ -145,7 +148,27 @@ $('#refresh').click(function(){
 	$('#tweet-wrapper').hide();
 	$('#flatten').hide();
 	$('.wrapper').removeClass('clicked');
+	$('#download').hide();
 })
 
-if (window.location.protocol != "https:")
-    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+// if (window.location.protocol != "https:")
+//     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+
+
+/**
+ * This is the function that will take care of image extracting and
+ * setting proper filename for the download.
+ * IMPORTANT: Call it from within a onclick event.
+*/
+function downloadCanvas(link, canvasId, filename) {
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
+}
+
+/** 
+ * The event handler for the link's onclick event. We give THIS as a
+ * parameter (=the link element), ID of the canvas and a filename.
+*/
+document.getElementById('download').addEventListener('click', function() {
+    downloadCanvas(this, 'flatten', 'santa.png');
+}, false);

@@ -313,23 +313,24 @@ svg.block{
 	border-radius: 50px;
 	font-size: 16px;
 	font-family: 'Oswald', sans-serif;
-	transition: 0.2s ease-in-out;
+	transition: 0.3s ease-in-out;
 	text-shadow: 1px 1px #545454;
 }
 
 .btn:hover{
 	cursor: pointer;
 	background-color: #A5010A;
+	border-radius: 10px;
 }
 
 #snap{
 	background-image: url('i/snap.png');
 	background-size: 26px;
-	background-position: 94% 14px;
+	background-position: 91% 14px;
 	font-size: 26px;
     display: block;
     margin: -27px auto 10px;
-    padding-right: 48px;
+    padding: 7px 65px 7px 30px
 }
 
 #refresh{
@@ -342,6 +343,13 @@ svg.block{
 	background-image: url('i/snow.png');
 	background-size: 18px;
 	background-position: 84% 8px;
+}
+
+#download{
+	background-image: url('i/download.png');
+	background-size: 18px;
+	background-position: 92% 10px;
+	display: none;
 }
 
 .status{
@@ -401,5 +409,9 @@ svg.block{
 	}
 	.btn{
 		margin: 5px;
+	}
+	#download{
+	    width: 130px;
+	    margin: 5px auto;
 	}
 }
